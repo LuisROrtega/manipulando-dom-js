@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  margin-left: 1.5em;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ccc;
+  padding: 1em;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #474747;
+  font-size: 1.2em;
+}
+
+.navbar a:hover {
+  color: #7b7b7b;
+  text-decoration: underline;
+}
+
+.card {
+  width: 950px;
+  font-size: 1.2em;
+  margin: 15px 0px 15px 0px;
+  padding: 1.8em 0em 1.8em 1.8em;
+  text-align: left;
+  border-radius: 0.5em;
+  background-color: #e1e1e1;
+  display: block; /* Cambiar de "inline-block" a "block" */
+}
+
+.list, ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  overflow: hidden;
+  font-size: 1em;
+  justify-content: left;
+  background-color: #f4f4f4;
+}
+
+.list li {
+  padding: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li:nth-child(even) {
+  background-color: #cccc;
+}
+
+.form-control {
+  width: 50%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+}
+
+#descriptionHelp {
+  display: block;
+  margin: 0em 0em 1.2em 0em;
+}
+
+.btn {
+  border: none; 
+  color: white; 
+  padding: 14px 28px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
+.btn-primary {background-color: #007bff;} 
+.btn-primary:hover {background: #0b7dda;}
+
+.btn-success {background-color: #04AA6D;} 
+.btn-success:hover {background-color: #46a049;}
+
+footer {
+  text-align: left;
+  padding: 20px;
+  font-size: 0.8em;
+  color: #666;
+}

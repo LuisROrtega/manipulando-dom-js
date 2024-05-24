@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <title>Eventos | DOM</title>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="container-navbar">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">DOM</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="card">
+        <h2 class="display-2" id="title">Cursos</h2>
+        <p class="description-container" id="text-description">
+            Lista de cursos
+        </p>
+        <form action="" id="create-course">
+            <div class="form-group">
+                <input type="text" name="" class="form-control" id="title-form" placeholder="Insert Title">
+            </div>
+
+
+            <div class="form-group">
+                <input type="text" name="" class="form-control" id="description-form" placeholder="Insert Description">
+                <small class="form-text text-muted" id="descriptionHelp">Escribe una breve descripción</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="create-course" >Crear curso</button>
+        </form>
+
+        <!-- <button type="button" class="btn btn-primary" id="hola">Ocultar</button> -->
+      </div>
+
+      <div class="list">
+        <ul class="list-group">
+          <li class="list-group-item" id="first-course">Python</li>
+          <li class="list-group-item">Javascript</li>
+          <li class="list-group-item">Java 8</li>
+          <li class="list-group-item">Ruby</li>
+          <li class="list-group-item">C#</li>
+          <li class="list-group-item">Kotlin</li>
+          <li class="list-group-item" id="last-course">Perl</li>
+        </ul>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="row">
+          <p class="text-footer">DOM - Footer</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
