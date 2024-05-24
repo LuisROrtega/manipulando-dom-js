@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar {
+    margin-left: 1.5em;
+    width: 100%;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #474747;
+    font-size: 1.2em;
+}
+
+.navbar a:hover {
+    color: #7b7b7b;
+    text-decoration: underline;
+}
+
+.card {
+    width: 950px;
+    font-size: 1.2em;
+    margin: 15px 0px 15px 0px;
+    padding: 1.8em 0em 1.8em 1.8em;
+    text-align: left;
+    border-radius: 0.5em;
+    display: inline-block;
+    background-color: #e1e1e1;
+}
+
+
+.list, ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    overflow: hidden;
+    font-size: 1em;
+    justify-content: left;
+    background-color: #f4f4f4;
+}
+
+.list li {
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.list li:nth-child(even) {
+    background-color: #cccc;
+}
+
+footer {
+    text-align: left;
+    padding: 20px;
+    font-size: 0.8em;
+    color: #666;
+}
