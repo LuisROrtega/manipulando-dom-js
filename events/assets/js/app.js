@@ -107,4 +107,38 @@ document.addEventListener("DOMContentLoaded", () => {
   titleForm.addEventListener("change", (e) => {
     console.dir(e.target.checked);
   });
+
+  // Propagación de eventos - Event bubbling
+  // const li = document.querySelector(".list-group-item");
+  // const ul = document.querySelector(".list-group");
+  // const divList = document.querySelector('.list');
+  // const content = document.querySelector('.content');
+  // const body = document.querySelector('body');
+
+  // li.addEventListener("click", showMessage);
+  // ul.addEventListener("click", showMessage);
+  // divList.addEventListener("click", showMessage);
+  // content.addEventListener("click", showMessage);
+  // body.addEventListener("click", showMessage);
+
+  // Optimizando código
+  for (let element of document.querySelectorAll('*')) {
+    element.addEventListener("click", showMessage);
+  }
+
+  function showMessage(e) {
+    console.dir("Elemento actual: " + this.tagName);
+    console.log("Elemento seleccionado: "+ e.target.tagName);
+    console.log("\n");
+
+    setInterval(() => {
+      if ('click') {
+        console.clear();
+      } else {
+        false;
+      }
+    }, 5000);
+
+    e.stopPropagation();
+  }
 });
