@@ -41,6 +41,19 @@ body {
   display: block; /* Cambiar de "inline-block" a "block" */
 }
 
+.thumbnail {
+  border: 1px solid #e1e1e1;
+  border-radius: 0.5em;
+  width: 300px;
+  max-width: 400px;
+  padding: 1em 0em 2em 1em;
+  margin-bottom: 2em;
+}
+
+#description-card {
+  margin-bottom: 20px;
+}
+
 .list, ul {
   width: 100%;
   list-style: none;
@@ -87,15 +100,19 @@ body {
 .btn {
   border: none; 
   color: white; 
-  padding: 14px 28px; 
+  padding: 10px 20px; 
   cursor: pointer; 
   border-radius: 5px; 
+  text-decoration: none;
 }
 .btn-primary {background-color: #007bff;} 
 .btn-primary:hover {background: #0b7dda;}
 
 .btn-success {background-color: #04AA6D;} 
 .btn-success:hover {background-color: #46a049;}
+
+.btn-danger {background-color: #f44336;} 
+.btn-danger:hover {background: #da190b;}
 
 footer {
   text-align: left;

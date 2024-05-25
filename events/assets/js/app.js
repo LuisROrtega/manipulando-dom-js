@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
   const button = document.querySelector(".btn.btn-primary");
   const title = document.querySelector(".display-2");
   const description = document.querySelector(".description-container");
@@ -85,28 +85,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // });
 
   // Trabajando sobre formulario
-  const form = document.getElementById("create-course");
+  // const form = document.getElementById("create-course");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  // form.addEventListener("submit", (e) => {
+  //   e.preventDefault();
 
-    let title = document.getElementById("title-form").value;
-    let description = document.getElementById("description-form").value;
+  //   let title = document.getElementById("title-form").value;
+  //   let description = document.getElementById("description-form").value;
 
-    console.log(title + "\n" + description);
-  });
+  //   console.log(title + "\n" + description);
+  // });
 
-  const checkbox = document.getElementById("checkbox");
+  // const checkbox = document.getElementById("checkbox");
 
-  checkbox.addEventListener("change", (e) => {
-    console.log(e.target.checked);
-  });
+  // checkbox.addEventListener("change", (e) => {
+  //   console.log(e.target.checked);
+  // });
 
-  const titleForm = document.getElementById("title-form");
+  // const titleForm = document.getElementById("title-form");
 
-  titleForm.addEventListener("change", (e) => {
-    console.dir(e.target.checked);
-  });
+  // titleForm.addEventListener("change", (e) => {
+  //   console.dir(e.target.checked);
+  // });
 
   // Propagación de eventos - Event bubbling
   // const li = document.querySelector(".list-group-item");
@@ -122,23 +122,59 @@ document.addEventListener("DOMContentLoaded", () => {
   // body.addEventListener("click", showMessage);
 
   // Optimizando código
-  for (let element of document.querySelectorAll('*')) {
-    element.addEventListener("click", showMessage);
+  // for (let element of document.querySelectorAll('*')) {
+  //   element.addEventListener("click", showMessage);
+  // }
+
+  // function showMessage(e) {
+  //   console.dir("Elemento actual: " + this.tagName);
+  //   console.log("Elemento seleccionado: "+ e.target.tagName);
+  //   console.log("\n");
+
+  //   setInterval(() => {
+  //     if ('click') {
+  //       console.clear();
+  //     } else {
+  //       false;
+  //     }
+  //   }, 5000);
+
+  //   e.stopPropagation();
+  // }
+
+  // Cards Manipulation
+  const row = document.querySelector('.row');
+  const form = document.getElementById('course-form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let titleForm = document.getElementById('title-form').value;
+    let descriptionForm = document.getElementById('description-form').value;
+
+    if (titleForm && descriptionForm === undefined) {
+      alert('Debe ingresar un título y una descripción');
+    } else if (titleForm && descriptionForm != undefined) {
+      createCard(titleForm, descriptionForm);
+      form.reset();
+    }
+  });
+
+  function createCard(titleForm, descriptionForm) {
+    let card = 
+    `
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3 id="title-card">${titleForm}</h3>
+            <p id="description-card">${descriptionForm}</p>
+            <a href="#" class="btn btn-danger">Acción</a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    row.innerHTML += card;
   }
 
-  function showMessage(e) {
-    console.dir("Elemento actual: " + this.tagName);
-    console.log("Elemento seleccionado: "+ e.target.tagName);
-    console.log("\n");
-
-    setInterval(() => {
-      if ('click') {
-        console.clear();
-      } else {
-        false;
-      }
-    }, 5000);
-
-    e.stopPropagation();
-  }
 });
