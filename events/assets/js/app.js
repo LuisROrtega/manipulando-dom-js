@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Usando el contexto .this
-  const footer = document.querySelector(".text-footer");
+  const footer = document.querySelector("footer > .container");
 
   footer.addEventListener("click", function (e) {
     // this solo trabaja con funciones tradicionales
@@ -149,32 +149,30 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let titleForm = document.getElementById('title-form').value;
-    let descriptionForm = document.getElementById('description-form').value;
+    let titleForm = document.getElementById('title-form').value.trim();
+    let descriptionForm = document.getElementById('description-form').value.trim();
 
-    if (titleForm && descriptionForm === undefined) {
-      alert('Debe ingresar un título y una descripción');
-    } else if (titleForm && descriptionForm != undefined) {
+    if (!titleForm || !descriptionForm) {
+      alert('Los campos deben de contar con información válida');
+    } else {
       createCard(titleForm, descriptionForm);
       form.reset();
     }
   });
 
   function createCard(titleForm, descriptionForm) {
-    let card = 
-    `
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3 id="title-card">${titleForm}</h3>
-            <p id="description-card">${descriptionForm}</p>
-            <a href="#" class="btn btn-danger">Acción</a>
-          </div>
+    let card = document.createElement('div');
+    card.className = 'col-sm-6 col-md-4';
+    card.innerHTML = `
+      <div class="thumbnail">
+        <div class="caption">
+          <h3 id="title-card">${titleForm}</h3>
+          <p id="description-card">${descriptionForm}</p>
+          <a href="#" class="btn btn-danger">Acción</a>
         </div>
       </div>
     `;
-
-    row.innerHTML += card;
+    row.appendChild(card);
   }
 
 });
