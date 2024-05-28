@@ -155,24 +155,69 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!titleForm || !descriptionForm) {
       alert('Los campos deben de contar con información válida');
     } else {
-      createCard(titleForm, descriptionForm);
+      designCard(titleForm, descriptionForm);
       form.reset();
     }
+
   });
 
-  function createCard(titleForm, descriptionForm) {
-    let card = document.createElement('div');
-    card.className = 'col-sm-6 col-md-4';
-    card.innerHTML = `
-      <div class="thumbnail">
-        <div class="caption">
-          <h3 id="title-card">${titleForm}</h3>
-          <p id="description-card">${descriptionForm}</p>
-          <a href="#" class="btn btn-danger">Acción</a>
-        </div>
-      </div>
-    `;
-    row.appendChild(card);
+  let div = null;
+
+  function designCard(titleForm, descriptionForm) {
+    div = document.createElement('div');
+    div.className = 'col-sm-6 col-md-4';
+
+    let thumbnail = document.createElement('div');
+    thumbnail.className = 'thumbnail';
+
+    let caption = document.createElement('div');
+    caption.className = 'caption';
+
+    let h3 = document.createElement('h3');
+    h3.id = 'title-card';
+    h3.textContent = titleForm;
+
+    let p = document.createElement('p');
+    p.id = 'description-card';
+    p.textContent = descriptionForm;
+
+    let btn = document.createElement('a');
+    btn.className = 'btn btn-danger';
+    btn.textContent = 'Eliminar';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      deleteCard();
+    });
+
+    caption.appendChild(h3);
+    caption.appendChild(p);
+    caption.appendChild(btn);
+    thumbnail.appendChild(caption);
+    div.appendChild(thumbnail);
+
+    row.appendChild(div);
   }
+
+  function deleteCard() {
+    console.log('Carta a eliminar');
+    row.removeChild(div);
+  }
+
+
+  // function createCard(titleForm, descriptionForm) {
+  //   let card = document.createElement('div');
+  //   card.className = 'col-sm-6 col-md-4';
+  //   card.innerHTML = `
+  //     <div class="thumbnail">
+  //       <div class="caption">
+  //         <h3 id="title-card">${titleForm}</h3>
+  //         <p id="description-card">${descriptionForm}</p>
+  //         <a href="#" class="btn btn-danger">Acción</a>
+  //       </div>
+  //     </div>
+  //   `;
+  //   row.appendChild(card);
+  // }
 
 });
