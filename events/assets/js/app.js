@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const button = document.querySelector(".btn.btn-primary");
   const title = document.querySelector(".display-2");
   const description = document.querySelector(".description-container");
@@ -143,67 +142,152 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 
   // Cards Manipulation
-  const row = document.querySelector('.row');
-  const form = document.getElementById('course-form');
+  const row = document.querySelector(".row");
+  const form = document.getElementById("course-form");
+  const modalOverlay = document.getElementById("modal-overlay");
+  const modalContainer = document.getElementById("modal-overlay");
+  const divEditForm = document.getElementById("edit-form-container");
+  const closeForm = document.getElementById("cancel-edit");
+  const editForm = document.getElementById("edit-form");
+  // const modalOverlay = document.getElementById("modal-overlay");
+  // const closeModalBtn = document.getElementById("close-modal");
 
-  form.addEventListener('submit', (e) => {
+  let h3  = null;
+  let p = null;
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    let titleForm = document.getElementById('title-form').value.trim();
-    let descriptionForm = document.getElementById('description-form').value.trim();
+    let titleForm = document.getElementById("title-form").value.trim();
+    let descriptionForm = document
+      .getElementById("description-form")
+      .value.trim();
 
     if (!titleForm || !descriptionForm) {
-      alert('Los campos deben de contar con información válida');
+      alert("Los campos deben de contar con información válida");
     } else {
       designCard(titleForm, descriptionForm);
       form.reset();
     }
-
   });
 
-  let div = null;
+  editForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let title = document.getElementById("edit-title").value;
+    let description = document.getElementById("edit-description").value;
+
+    if (title.length > 0 && description.length > 0) {
+      h3.textContent = title;
+      p.textContent = description;
+
+      console.log(
+        "El título es: " + title + "\n" + "Descripción: " + description
+      );
+
+      modalOverlay.style.display = "none";
+      divEditForm.style.display = "none";
+      editForm.reset();
+    } else {
+      alert("Los campos deben de contar con información válida");
+    }
+  });
+
+  closeForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalOverlay.style.display = "none";
+    divEditForm.style.display = "none";
+  });
 
   function designCard(titleForm, descriptionForm) {
-    div = document.createElement('div');
-    div.className = 'col-sm-6 col-md-4';
+    let div = document.createElement("div");
+    div.className = "col-sm-6 col-md-4";
 
-    let thumbnail = document.createElement('div');
-    thumbnail.className = 'thumbnail';
+    let thumbnail = document.createElement("div");
+    thumbnail.className = "thumbnail";
 
-    let caption = document.createElement('div');
-    caption.className = 'caption';
+    let caption = document.createElement("div");
+    caption.className = "caption";
 
-    let h3 = document.createElement('h3');
-    h3.id = 'title-card';
+    h3 = document.createElement("h3");
+    h3.id = "title-card";
     h3.textContent = titleForm;
 
-    let p = document.createElement('p');
-    p.id = 'description-card';
+    p = document.createElement("p");
+    p.id = "description-card";
     p.textContent = descriptionForm;
 
-    let btn = document.createElement('a');
-    btn.className = 'btn btn-danger';
-    btn.textContent = 'Eliminar';
+    let btn = document.createElement("a");
+    btn.className = "btn btn-danger";
+    btn.textContent = "Eliminar";
 
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
-      deleteCard();
+      deleteCard(div);
+    });
+
+    let editBtn = document.createElement("a");
+    editBtn.className = "btn btn-primary";
+    editBtn.textContent = "Editar";
+
+    editBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // desginEditCard();  
+      // modalOverlay.style.display = "flex";
+      modalOverlay.style.display = "flex";
+      divEditForm.style.display = "flex";
     });
 
     caption.appendChild(h3);
     caption.appendChild(p);
     caption.appendChild(btn);
+    caption.appendChild(editBtn);
     thumbnail.appendChild(caption);
     div.appendChild(thumbnail);
 
     row.appendChild(div);
   }
 
-  function deleteCard() {
-    console.log('Carta a eliminar');
-    row.removeChild(div);
+  function deleteCard(card) {
+    console.log("Carta a eliminar");
+    row.removeChild(card);
   }
 
+  function desginEditCard() {
+  // Eliminar el último hijo si existe
+  if (modalContainer.lastElementChild) {
+    modalContainer.removeChild(modalContainer.lastElementChild);
+  }
+
+    let div = document.createElement("div");
+    div.className = "modal-content";
+
+    let p = document.createElement("p");
+    p.textContent = "Tarjeta creada desde JS";
+
+    let closeBtn = document.createElement("button");
+    closeBtn.className = "btn btn-danger";
+    closeBtn.id = "close-modal";
+    closeBtn.textContent = "Cerrar";
+
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalOverlay.style.display = "none";
+    });
+
+    div.appendChild(p);
+    div.appendChild(closeBtn);
+
+    modalContainer.appendChild(div);
+  }
+
+  // function showCard() {
+  //   modalOverlay.style.display = 'flex';
+  // }
+
+  // closeModalBtn.addEventListener('click', () => {
+  //   modalOverlay.style.display = 'none';
+  // });
 
   // function createCard(titleForm, descriptionForm) {
   //   let card = document.createElement('div');
@@ -219,5 +303,4 @@ document.addEventListener("DOMContentLoaded", () => {
   //   `;
   //   row.appendChild(card);
   // }
-
 });
