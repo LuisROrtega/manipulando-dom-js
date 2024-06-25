@@ -152,8 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const modalOverlay = document.getElementById("modal-overlay");
   // const closeModalBtn = document.getElementById("close-modal");
 
-  let h3  = null;
-  let p = null;
+  let currentCard = null;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -166,8 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!titleForm || !descriptionForm) {
       alert("Los campos deben de contar con información válida");
     } else {
-      designCard(titleForm, descriptionForm);
-      form.reset();
+      if (row.childElementCount >= 6) {
+        alert("No se pueden agregar más de 6 cursos");
+      } else {
+        designCard(titleForm, descriptionForm);
+        form.reset();
+      }
     }
   });
 
@@ -178,8 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let description = document.getElementById("edit-description").value;
 
     if (title.length > 0 && description.length > 0) {
-      h3.textContent = title;
-      p.textContent = description;
+      currentCard.querySelector("#title-card").textContent = title;
+      currentCard.querySelector("#description-card").textContent = description;
 
       console.log(
         "El título es: " + title + "\n" + "Descripción: " + description
@@ -209,11 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let caption = document.createElement("div");
     caption.className = "caption";
 
-    h3 = document.createElement("h3");
+    let h3 = document.createElement("h3");
     h3.id = "title-card";
     h3.textContent = titleForm;
 
-    p = document.createElement("p");
+    let p = document.createElement("p");
     p.id = "description-card";
     p.textContent = descriptionForm;
 
@@ -232,6 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     editBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      currentCard = div;
+      document.getElementById("edit-title").value = h3.textContent;
+      document.getElementById("edit-description").value = p.textContent;
+      console.dir(row);
       // desginEditCard();  
       // modalOverlay.style.display = "flex";
       modalOverlay.style.display = "flex";
